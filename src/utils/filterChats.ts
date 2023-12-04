@@ -1,4 +1,4 @@
-import { T_Chat } from '../types/Chat'
+import { T_Chat } from '../types/chat'
 
 export const FilterChats = function (chats: T_Chat[], filterValue: string): T_Chat[] {
     let filteredChats: T_Chat[] = []

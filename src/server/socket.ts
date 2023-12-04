@@ -1,8 +1,8 @@
 import { Server as HttpServer } from 'http'
 import { Socket, Server } from 'socket.io'
-import { T_Message } from '../types/Message'
-import { T_Chat } from '../types/Chat'
-import { IPerson } from '../types/Person'
+import { T_Message } from '../types/message'
+import { T_Chat } from '../types/chat'
+import { IPerson } from '../types/person'
 // import { getCompanyPeopleRoomKey } from '../utils/getCompanyPeopleRoomKey'
 
 export class WebSocketsServer {
@@ -20,7 +20,7 @@ export class WebSocketsServer {
             pingTimeout: 5000,
             cookie: false,
             cors: {
-                origin: 'https://appv2.flexichatbot.com',
+                origin: 'http://localhost:3000',
             },
         })
 

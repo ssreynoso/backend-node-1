@@ -4,6 +4,7 @@ import {
     HeadObjectCommand,
     ListBucketsCommand,
     ListObjectsCommand,
+    ObjectCannedACL,
     PutObjectCommand,
     PutObjectCommandInput,
     S3Client,
@@ -134,10 +135,33 @@ export class DigitalOceanSpacesServices {
             Bucket: bucketName,
             Key   : fileKey,
             Body  : fileContent,   // Usar el contenido de la imagen como el cuerpo del objeto.
-            ACL   : 'public-read', // Define los permisos ACL, como private o public-read.
+            ACL   : ObjectCannedACL.public_read, // Define los permisos ACL, como private o public-read.
             ContentType: `${mimeType}/${fileExtension}`
         } as PutObjectCommandInput
         
+        try {
+            const data = await this.client.send(new PutObjectCommand(params))
+            return { data: data, error: null }
+        } catch (err) {
+            return { data: null, error: err }
+        }
+    }
+
+    async uploadPDF(bucketName: string, fileKey: string, filePath: string) {
+        const fileContent = await fs.readFile(filePath)
+
+        const params = {
+            Bucket: bucketName, // The path to the directory you want to upload the object to, starting with your Space name.
+            Key: fileKey,       // Object key, referenced whenever you want to access this file later.
+            Body: fileContent,   // The object's contents. This variable is an object, not a string.
+            ACL: ObjectCannedACL.private,     // Defines ACL permissions, such as private or public-read.
+            ContentType: 'application/pdf'
+            // Metadata: {
+            //     // Defines metadata tags.
+            //     'x-amz-meta-my-key': 'your-value',
+            // },
+        }
+
         try {
             const data = await this.client.send(new PutObjectCommand(params))
             return { data: data, error: null }

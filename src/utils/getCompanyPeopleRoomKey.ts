@@ -1,4 +1,4 @@
-import { IPerson } from '../types/Person'
+import { IPerson } from '../types/person'
 
 export const getCompanyPeopleRoomKey = (empToken: string, person: IPerson) => {
     return `${empToken}-${person.PersonaId}`

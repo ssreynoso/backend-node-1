@@ -1,7 +1,7 @@
 import express from 'express'
 import multer from 'multer'
 import { paths } from '../../constants/paths'
-import { AudiosServices } from '../../services/audios.services'
+import { AudioServices } from '../../services/audio.services'
 
 // Configuración de multer para almacenar los archivos en una carpeta específica
 const storage = multer.diskStorage({
@@ -23,9 +23,9 @@ router.post('/', upload.single('audio'), async (req, res) => {
         const result: { success?: boolean } = { success: true }
 
         if (req.file) {
-            const audiosServices = AudiosServices.getInstance()
+            const audioServices = AudioServices.getInstance()
 
-            audiosServices.getTranscriptedText(req.file)
+            audioServices.getTranscriptedText(req.file)
                 .then(response => {
                     res.status(200).json({
                         success: result.success || false,

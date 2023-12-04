@@ -1,9 +1,9 @@
 import express, { Application, Request, Response } from 'express'
 import http, {Server as HttpServer} from 'http'
+import requestIp from 'request-ip'
 import cors from 'cors'
 import { routerApi } from '../router/api'
 import { config } from '../config'
-import { paths } from '../constants/paths'
 import { WebSocketsServer } from './socket'
 import { routerSockets } from '../router/sockets'
 
@@ -29,8 +29,7 @@ export class Server {
         // this.app.use(cors({ origin: ['https://appv2.flexichatbot.com'] }))
         this.app.use(cors())
         this.app.use(express.json())
-        const statics = `${paths.staticFiles}/client`
-        this.app.use(express.static(statics))
+        this.app.use(requestIp.mw())
     }
 
     private routes() {
