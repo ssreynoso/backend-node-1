@@ -1,4 +1,4 @@
-import { ErrorClass } from '../types/errors'
+import { ErrorClass } from '../../types/flexichatbot-assistant/errors'
 
 type T_CommonErrorObject = {
     data: null

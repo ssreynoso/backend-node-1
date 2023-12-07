@@ -1,4 +1,4 @@
-import { T_PDFFile } from '../types/pdf'
+import { T_PDFFile } from '../../types/flexichatbot-assistant/pdf'
 import { PDFDocument } from 'pdf-lib'
 import fs from 'fs'
 

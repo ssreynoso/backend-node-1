@@ -1,5 +1,5 @@
-import { ErrorClass } from '../types/errors'
-import { PDFErrors } from '../constants/errors/pdf'
+import { PDFErrors } from '../../constants/errors/pdf'
+import { ErrorClass } from '../../types/flexichatbot-assistant/errors'
 import { getPDFDetails } from './getPDFDetails'
 
 export const getPDFErrors = async function (pdfFile: Express.Multer.File): Promise<Error | null> {
