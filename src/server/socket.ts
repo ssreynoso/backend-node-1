@@ -20,7 +20,7 @@ export class WebSocketsServer {
             pingTimeout: 5000,
             cookie: false,
             cors: {
-                origin: 'http://localhost:3000',
+                origin: 'https://appv2.flexichatbot.com',
             },
         })
 
