@@ -3,6 +3,7 @@ import generalRouter            from './general.router'
 import audioRouter              from './audio.router'
 import filesRouter              from './files.router'
 import webpushRouter            from './webpush.router'
+import FlexiChatBotAssistantRouter from './flexichatbot-assistant'
 
 export const routerApi = function (app: Application) {
     const router_api_v1 = express.Router()
@@ -13,6 +14,7 @@ export const routerApi = function (app: Application) {
     router_api_v1.use('/audio', audioRouter)
     router_api_v1.use('/files', filesRouter)
     router_api_v1.use('/webpush', webpushRouter)
+    router_api_v1.use('/flexichatbot-assistant', FlexiChatBotAssistantRouter)
 
     // router_api_v1.use('/<entity>', entity_router);
 }

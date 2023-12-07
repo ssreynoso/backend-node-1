@@ -1,14 +1,12 @@
-import express, { Application } from 'express'
+import express from 'express'
 import generalRouter from './general.router'
 import chatsRouter from './chats.router'
+import staticRouter from './static.router'
 
-export const routerApi = function (app: Application) {
-    const router_api_v1 = express.Router()
+const FlexiChatBotAssistantRouter = express.Router()
 
-    app.use('/api/v1', router_api_v1)
+FlexiChatBotAssistantRouter.use('/', generalRouter)
+FlexiChatBotAssistantRouter.use('/', staticRouter)
+FlexiChatBotAssistantRouter.use('/chats', chatsRouter)
 
-    router_api_v1.use('/', generalRouter)
-    router_api_v1.use('/chats', chatsRouter)
-
-    // router_api_v1.use('/<entity>', entity_router);
-}
+export default FlexiChatBotAssistantRouter

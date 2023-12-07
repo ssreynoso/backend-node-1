@@ -105,6 +105,21 @@ export class DigitalOceanSpacesServices {
         }
     }
 
+    async getPDFStream(bucketName: string, fileKey: string) {
+        const bucketParams = {
+            Bucket: bucketName,
+            Key: fileKey,
+        }
+
+        try {
+            const response = await this.client.send(new GetObjectCommand(bucketParams))
+
+            return { data: response.Body as NodeJS.ReadableStream, error: null }
+        } catch (err) {
+            return { data: null, error: err }
+        }
+    }
+
     async uploadObject(bucketName: string, fileKey: string, body: string) {
         const params = {
             Bucket: bucketName, // The path to the directory you want to upload the object to, starting with your Space name.
