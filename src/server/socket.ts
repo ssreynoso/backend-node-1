@@ -8,18 +8,19 @@ import { IPerson } from '../types/person'
 export class WebSocketsServer {
     public io: Server
     private companyRooms: string[]
-    private companyPeopleRooms: Map<string, string[]>
+    // private companyPeopleRooms: Map<string, string[]>
     private static instance: WebSocketsServer
 
     private constructor(server: HttpServer) {
         this.companyRooms = []
-        this.companyPeopleRooms = new Map()
+        // this.companyPeopleRooms = new Map()
         this.io = new Server(server, {
             serveClient: false,
             pingInterval: 10000,
             pingTimeout: 5000,
             cookie: false,
             cors: {
+                // Poner como una variable de entorno
                 origin: 'https://appv2.flexichatbot.com',
             },
         })
