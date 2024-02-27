@@ -181,9 +181,6 @@ export class ChatsServices {
             const updateChatResponse = await this.updateChat(chatToken, (chat) => {
                 const updatedChat = { ...chat }
 
-                console.log('UpdatedChat: ')
-                console.log(updatedChat)
-    
                 // Actualizo los mensajes del chat, no guardo el primer prompt
                 if (chat.messages.length !== 0) {
                     const newMessage: T_Message = { sender: 'user', content: input }

@@ -77,8 +77,6 @@ router.post('/document',
                 const { data: fileUrl, error: urlError } = await DOSpacesServices.generatePresignedUrl(bucketName, fileKey)
                 if (urlError) { throw urlError }
 
-                console.log(fileUrl)
-
                 res.status(200).json({
                     data: {
                         fileName: req.file.originalname,
@@ -133,8 +131,6 @@ router.post('/image',
                 // Devuelvo la URL temporal en el servidor de digital ocean
                 const { data: fileUrl, error: urlError } = await DOSpacesServices.generatePresignedUrl(bucketName, fileKey)
                 if (urlError) { throw urlError }
-
-                console.log('fileUrl image', fileUrl)
 
                 res.status(200).json({
                     data: {

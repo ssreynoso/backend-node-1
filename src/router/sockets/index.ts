@@ -10,10 +10,6 @@ export const routerSockets = function (app: Application, webSocketsServer: WebSo
         try {
             const { EmpToken, Chat, Message } = req.body
 
-            console.log('EmpToken', EmpToken)
-            console.log('Chat', Chat)
-            console.log('Message', Message)
-
             if (!EmpToken) throw new Error('No existe EmpToken')
             if (!Chat)     throw new Error('No existe Chat')
             if (!Message)  throw new Error('No existe Message')

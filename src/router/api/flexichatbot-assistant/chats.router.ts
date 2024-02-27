@@ -169,7 +169,6 @@ router.post('/',
             }
 
             const response = await fetch(`${config.PYTHON_SERVER}/documents`, requestOptions)
-            console.log(response)
             result         = await response.json()
 
             if (result.success) {
@@ -206,15 +205,10 @@ router.post('/',
 
                     const exist = await DOSpacesServices.existFile(bucketName, fileKey)
 
-                    console.log('bucketName: ', bucketName)
-                    console.log('fileKey: ', fileKey)
-                    console.log('filePath: ', filePath)
-
                     if (!exist) {
                         // Subo archivo a digital ocean con source.id
                         const uploadPDFResponse = await DOSpacesServices.uploadPDF(bucketName, fileKey, filePath)
                         const { error: uploadPDFError } = uploadPDFResponse
-                        console.log(uploadPDFResponse)
                         if (uploadPDFError) {
                             throw uploadPDFError
                         }
@@ -225,8 +219,6 @@ router.post('/',
                 }
                 
                 sources = []
-
-                console.log(newChat)
 
                 res.status(200).json({
                     chat: newChat,

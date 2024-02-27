@@ -62,7 +62,6 @@ export const ClientQuestionValidator = async function (req: Request, res:Respons
 
         if (!publicIP) throw new ErrorClass('MissingIP', HeadersErrors.noClientIP)
         
-        console.log(publicIP)
         // Controlo que puedo obtener el cliente
         const { data, error } = await clientsServices.getClient(publicIP)
         if (error) {
@@ -70,7 +69,6 @@ export const ClientQuestionValidator = async function (req: Request, res:Respons
         }
 
         const client = data as T_Client
-        console.log('client', client)
         const validationError = clientsServices.questionsValidator(client)
 
         if (validationError){
