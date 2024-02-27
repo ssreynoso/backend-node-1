@@ -21,7 +21,7 @@ export class WebSocketsServer {
             cookie: false,
             cors: {
                 // Poner como una variable de entorno
-                origin: ['https://appv2.flexichatbot.com', 'http://localhost:3000', 'https://app.flexibot.tech/'],
+                origin: ['https://app.flexibot.tech', 'https://appv2.flexichatbot.com', 'http://localhost:3000'],
             },
         })
 
